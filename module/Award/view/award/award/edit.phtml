@@ -1,0 +1,30 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Sửa thông tin danh mục';
+$this->headTitle($title);
+?>
+<meta charset='utf-8'>
+<div class="container">
+    <h3><?php echo $title; ?></h3>
+    <hr>
+</div>
+<?php
+    $form->setAttribute('action',$this->url('award',['action'=>'edit','id'=>$id]));
+    $form->prepare();
+?>
+<?php
+    echo $this->form()->openTag($form);
+    echo $this->formRow($form->get('id'));
+?>
+<br>
+<label>Tên danh mục</label>
+ <div class="text-input-container">
+<?php
+    echo $this->formRow($form->get('awardName'));
+?>
+ </div>
+<br>
+<?php
+    echo $this->formRow($form->get('submit'));
+?>

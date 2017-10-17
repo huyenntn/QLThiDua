@@ -1,0 +1,37 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Thêm người dùng';
+$this->headTitle($title);
+?>
+<meta charset='utf-8'>
+<div class="container">
+    <h3><?php echo $title; ?></h3>
+    <hr>
+</div>
+
+<?php
+    $form->setAttribute('action',$this->url('auth',['action'=>'add']));
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+<label>Tên đăng nhập</label>
+<?php
+    
+    echo $this->formRow($form->get('acc'));
+?>
+<br>
+<label>Mật khẩu</label>
+<?php
+    echo $this->formRow($form->get('pass'));
+?>
+<br>
+<label>Tên người dùng</label>
+<?php
+    echo $this->formRow($form->get('name'));
+?>
+<br>
+<?php
+    echo $this->formRow($form->get('submit'));
+    
+?>

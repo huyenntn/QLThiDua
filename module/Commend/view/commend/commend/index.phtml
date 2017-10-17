@@ -1,0 +1,53 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Thống kê Thi đua - Khen thưởng';
+$this->headTitle($title);
+?>
+
+<meta charset='utf-8'>
+<div class="container">
+    <h3><?php echo $title; ?></h3>
+    <hr>
+    <p style="text-align: right">
+        <a class="btn btn-success"  href="<?php echo $this->url('commend', ['action' => 'requestType']); ?>">Thêm mới</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên cá nhân/Tổ chức</th>
+                <th>Hình thức khen thưởng</th>
+                <th>Loại khen thưởng</th>
+                <th>Đối tượng</th>
+                <th>Năm</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+            foreach ($commends as $item):
+                ?>
+                <tr>
+                    <td><?= $this->escapeHtml($item->nameS) ?></td>
+                    <td><?= $this->escapeHtml($item->subAwardName) ?></td>
+                    <td><?= $this->escapeHtml($item->awardName) ?></td>
+                    <td><?php
+                        if($this->escapeHtml($item->institute)==1){
+                        echo 'Cá nhân';
+
+                        } else if($this->escapeHtml($item->institute)==2){
+                        echo 'Tập thể';
+                        } else {
+                        echo '';
+                        }?></td>
+                    <td><?= $this->escapeHtml($item->year) ?></td>
+                    <td>
+                        <a class="btn btn-danger" href="<?php echo $this->url('commend', ['action' => 'edit', 'id' => $item->idCmd]); ?>">Sửa</a>  
+                        <a class="btn btn-warning" href="<?php echo $this->url('commend', ['action' => 'delete', 'id' => $item->idCmd]); ?>">Xóa</a>  
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

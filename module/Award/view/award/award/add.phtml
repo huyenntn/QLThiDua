@@ -1,0 +1,27 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Thêm danh mục';
+$this->headTitle($title);
+?>
+<meta charset='utf-8'>
+<div class="container">
+    <h3><?php echo $title; ?></h3>
+    <hr>
+</div>
+<?php
+    $form->setAttribute('action',$this->url('award',['action'=>'add']));
+    $form->prepare();
+    echo $this->form()->openTag($form);
+?>
+<label>Tên danh mục</label>
+ <div class="text-input-container">
+<?php
+    
+    echo $this->formRow($form->get('awardName'));
+?>
+ </div>
+<br>
+<?php
+    echo $this->formRow($form->get('submit'));
+?>
